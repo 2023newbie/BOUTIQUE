@@ -1,0 +1,29 @@
+.footer {
+    display: grid;
+    padding: 40px 0;
+    background-color: #000;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.footer ul {
+    color: #fff;
+    font-size: 16px;
+    padding-left: 20%;
+}
+
+.footer ul header {
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.footer ul a {
+    color: #999;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+    text-decoration: none;
+}
+
+.footer ul a:hover {
+    color: #ccc;
+}

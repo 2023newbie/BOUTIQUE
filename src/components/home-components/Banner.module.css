@@ -1,0 +1,44 @@
+.banner {
+    position: relative;
+}
+
+.subBanner {
+    top: 50%;
+    padding-left: 5%;
+    max-width: 450px;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.sub-title {
+    color: #999;
+    margin: 10px 0;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 2px;
+    display: inline-block;
+}
+
+.big {
+    font-size: 44px;
+    line-height: 1.1;
+    font-style: italic;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.button {
+    padding: 0;
+    border: none;
+}
+
+.button a {
+    border: none;
+    color: #eee;
+    font-size: 18px;
+    padding: 10px 20px;
+    font-style: italic;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #383838;
+}

@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+.main {
+  margin-top: 59px;
+}
+
+li {
+  list-style-type: none;
+}
+
+#modal {
+  position: relative;
+}

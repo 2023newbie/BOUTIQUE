@@ -1,0 +1,52 @@
+.container {
+    margin-top: 60px;
+}
+
+.advantage {
+    display: grid;
+    padding: 50px;
+    background-color: #f8f9fa;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(3, auto);
+}
+
+.email {
+    display: grid;
+    margin: 30px 0;
+    padding: 0 50px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.head {
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.para {
+    margin: 5px 0;
+    color: silver;
+}
+
+.form input {
+    width: 80%;
+    outline: none;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.form button {
+    width: 20%;
+    color: #fff;
+    padding: 20px 25px;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    background-color: #000;
+}
+
+.form button:hover {
+    color: #000;
+    cursor: pointer;
+    background-color: #ccc;
+    border: 1px solid #ccc;
+}
