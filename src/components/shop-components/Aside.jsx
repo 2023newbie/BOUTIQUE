@@ -1,8 +1,17 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
 import classes from './Aside.module.css'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { productsListActions } from '../../store/products-list'
 
 const Aside = () => {
+  const searchParams = useSearchParams()[0].get('type')
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(productsListActions.addListByCategory(searchParams))
+  }, [searchParams, dispatch])
+
   return (
     <aside className={classes.side_nav}>
         <h3>CATEGORIES</h3>
@@ -10,8 +19,8 @@ const Aside = () => {
           <h4>APPLE</h4>
           <li>
             <NavLink
-              to="?type=all"
-              className={({ isActive }) => (isActive ? classes.active : "")}
+              to="/shop?type=all"
+              className={searchParams === 'all' ? classes.active : ""}
             >
               All
             </NavLink>
@@ -20,24 +29,24 @@ const Aside = () => {
             <h5>IPHONE & MAC</h5>
             <li>
               <NavLink
-                to="?type=iphone"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=iphone"
+                className={searchParams === 'iphone' ? classes.active : ""}
               >
                 Iphone
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="?type=ipad"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=ipad"
+                className={searchParams === 'ipad' ? classes.active : ""}
               >
                 Ipad
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="?type=macbook"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=macbook"
+                className={searchParams === 'macbook' ? classes.active : ""}
               >
                 Macbook
               </NavLink>
@@ -47,16 +56,16 @@ const Aside = () => {
             <h5>WIRELESS</h5>
             <li>
               <NavLink
-                to="?type=airpod"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=airpod"
+                className={searchParams === 'airpod' ? classes.active : ""}
               >
                 Airpod
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="?type=watch"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=watch"
+                className={searchParams === 'watch' ? classes.active : ""}
               >
                 Watch
               </NavLink>
@@ -66,24 +75,24 @@ const Aside = () => {
             <h5>OTHER</h5>
             <li>
               <NavLink
-                to="?type=mouse"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=mouse"
+                className={searchParams === 'mouse' ? classes.active : ""}
               >
                 Mouse
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="?type=keyboard"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=keyboard"
+                className={searchParams === 'keyboard' ? classes.active : ""}
               >
                 Keyboard
               </NavLink>
             </li>
             <li>
               <NavLink
-                to="?type=other"
-                className={({ isActive }) => (isActive ? classes.active : "")}
+                to="/shop?type=other"
+                className={searchParams === 'other' ? classes.active : ""}
               >
                 Other
               </NavLink>

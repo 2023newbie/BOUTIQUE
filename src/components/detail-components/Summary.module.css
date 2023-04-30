@@ -1,0 +1,84 @@
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-top: 80px;
+}
+
+.picture {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.small_picture img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+picture img {
+    vertical-align:text-bottom;
+}
+
+.info {
+    font-style: italic;
+}
+
+.info h1 {
+    font-size: 36px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+}
+
+.price {
+    font-size: 20px;
+    color: #666;
+}
+
+.desc {
+    color: #666;
+    line-height: 1.8;
+    margin: 40px 0;
+}
+
+.category span {
+    color: #666;
+}
+
+.form {
+    position: relative;
+    margin-top: 30px;
+}
+
+.form label {
+    position: absolute;
+    padding: 12px 0;
+    text-transform: uppercase;
+    color: #666;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+.form input {
+    padding: 12px 0 12px 150px;
+    width: 30px;
+    outline: none;
+    font-size: 16px;
+}
+
+.form button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 1px solid #000;
+    background-color: #000000d3;
+    color: #fff;
+    font-style: italic;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.form button:hover {
+    cursor: pointer;
+    border: 1px solid #aaa;
+    background-color: #aaa;
+    color: #000;
+}
