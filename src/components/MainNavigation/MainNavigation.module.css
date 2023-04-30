@@ -1,13 +1,13 @@
 .nav {
-    display: flex;
-    padding: 15px 0;
-    justify-content: space-between;
-    position: fixed;
-    z-index: 10;
     top: 0;
     left: 0;
     right: 0;
+    z-index: 10;
+    display: flex;
+    padding: 15px 0;
+    position: fixed;
     background-color: #eee;
+    justify-content: space-between;
 }
 
 .scroll {
@@ -16,8 +16,8 @@
 
 .nav a {
     color: #333;
-    text-decoration: none;
     font-style: italic;
+    text-decoration: none;
 }
 
 .nav a:hover {
@@ -33,6 +33,21 @@
 }
 
 .nav .logo {
-    font-style: italic;
     font-size: 24px;
+    font-style: italic;
+}
+
+.btn {
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    align-self: center;
+    border-radius: 10px;
+    background-color: #555;
+}
+
+.btn:hover {
+    color: #000;
+    cursor: pointer;
+    background-color: #aaa;
 }

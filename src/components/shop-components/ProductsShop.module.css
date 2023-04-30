@@ -1,0 +1,28 @@
+.finding_query {
+    display: flex;
+    justify-content: space-between;
+}
+
+.finding_query input {
+    padding: 5px 20px;
+}
+
+.move_page {
+    text-align: right;
+}
+
+.move_page button {
+    padding: 10px;
+}
+
+.move_page span {
+    margin: 0 10px;
+    padding: 10px 15px;
+    background-color: #000;
+    color: #fff;
+}
+
+.move_page p {
+    font-size: 16px;
+    color: #666;
+}

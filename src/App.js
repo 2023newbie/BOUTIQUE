@@ -7,6 +7,8 @@ import CartPage from "./page/CartPage";
 import CheckoutPage from "./page/CheckoutPage";
 import LoginPage from "./page/LoginPage";
 import RegisterPage from "./page/RegisterPage";
+import { useDispatch } from "react-redux";
+import { loginActions } from "./store/login";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch()
+
+  const data = JSON.parse(localStorage.getItem('user_accounts'))
+  const loginData = data.find(item => item.isLogin === true)
+  if (loginData) {
+    dispatch(loginActions.login(loginData)) 
+  }
+
   return <RouterProvider router={router} />;
 }
 
