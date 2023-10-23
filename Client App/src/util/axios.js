@@ -1,7 +1,8 @@
 import axios from 'axios'
+import url from './url'
 
 const instance = axios.create({
-  baseURL: 'https://asm3-nodejs-f00e5645d891.herokuapp.com/'
+  baseURL: url.root
 })
 
 export default instance

@@ -4,6 +4,7 @@ import classes from './Message.module.css'
 import getToken from '../../../util/get-token'
 import axios from '../../../util/axios'
 import openSocket from 'socket.io-client'
+import url from '../../../util/url'
 
 const Message = () => {
   const [isShow, setIsShow] = useState(false)
@@ -32,7 +33,7 @@ const Message = () => {
   }
 
   useEffect(() => {
-    const socket = openSocket('https://asm3-nodejs-f00e5645d891.herokuapp.com')
+    const socket = openSocket(url.root)
     socket.on('session', data => {
       if (data.action === 'post' && data.userId === userId) {
         setMessages(data.messages)
