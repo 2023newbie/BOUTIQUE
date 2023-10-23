@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom'
 import { useEffect } from 'react'
 import openSocket from 'socket.io-client'
 import { useState } from 'react'
+import url from '../utils/url'
 
 const Input = styled.input`
   box-sizing: border-box;
@@ -32,7 +33,7 @@ const SideBarChat = ({ setPointId }) => {
   const [sessions, setSessions] = useState(data)
 
   useEffect(() => {
-    const socket = openSocket('https://asm3-nodejs-f00e5645d891.herokuapp.com')
+    const socket = openSocket(url.root)
     socket.on('session', data => {
       if (data.action === 'remove') {
         setSessions(prevState => {

@@ -3,6 +3,7 @@ import SideBarChat from '../components/SideBarChat'
 import ChatBox from '../components/ChatBox'
 import { useState } from 'react'
 import getToken from '../utils/get-token'
+import url from '../utils/url'
 
 const Chat = () => {
   const [pointId, setPointId] = useState('')
@@ -33,7 +34,7 @@ export async function loader() {
   const token = getToken()
 
   try {
-    const res = await fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/sessions', {
+    const res = await fetch(url.root + '/sessions', {
       headers: { 'Authorization': 'Bearer ' + token }
     })
     

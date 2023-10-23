@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import openSocket from 'socket.io-client'
 import getToken from '../utils/get-token'
+import url from '../utils/url'
 
 const Container = styled.div`
   padding-top: 32px;
@@ -89,7 +90,7 @@ const ChatBox = ({ id }) => {
     const token = getToken()
     const isMessageEmpty = content.trim() === ''
     if (!isMessageEmpty) {
-      fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/admin/session', {
+      fetch(url.root + '/admin/session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +107,7 @@ const ChatBox = ({ id }) => {
 
   useEffect(() => {
     const token = getToken()
-    fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/session/' + id, {
+    fetch(url.root + '/session/' + id, {
       headers: {
         'Authorization': 'Bearer ' + token
       }
@@ -119,7 +120,7 @@ const ChatBox = ({ id }) => {
   }, [id])
 
   useEffect(() => {
-    const socket = openSocket('https://asm3-nodejs-f00e5645d891.herokuapp.com/')
+    const socket = openSocket(url.root + '/')
     socket.on('session', data => {
       if (data.action === 'post' && data.userId === id) {
         setMessages(data.messages)

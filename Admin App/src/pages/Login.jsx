@@ -1,4 +1,5 @@
 import { Form, redirect, useActionData } from 'react-router-dom'
+import url from '../utils/url'
 
 const Login = () => {
   const data = useActionData()
@@ -32,7 +33,7 @@ export async function action({ request, params }) {
       password: data.get('password')
     }
     
-    const res = await fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/login', {
+    const res = await fetch(url.root + '/admin/login', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

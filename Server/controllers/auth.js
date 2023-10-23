@@ -68,30 +68,32 @@ exports.getLogin = async (req, res) => {
 exports.postAdminLogin = async (req, res) => {
   const email = req.body.email
   const password = req.body.password
-
+  
   try {
     const user = await User.findOne({ email })
     if (!user) {
       throw new Error('Email is invalid.')
     }
-    if (user.role !== 'admin' || user.role !== 'supporter') {
+    if (user.role === 'admin' || user.role === 'supporter') {
+      const isEqual = await bcrypt.compare(password, user.password)
+      console.log(isEqual);
+      if (!isEqual) {
+        throw new Error('Password is invalid.')
+      }
+      const token = jwt.sign({ id: user._id }, 'nodejsasm3', { expiresIn: '1h' })
+
+      res.status(200).json({
+        token,
+        user: {
+          email: user.email,
+          full_name: user.full_name,
+          phone: user.phone,
+          userId: user._id
+        },
+      })
+    } else {
       throw new Error('Unauthorized.')
     }
-    const isEqual = await bcrypt.compare(password, user.password)
-    if (!isEqual) {
-      throw new Error('Password is invalid.')
-    }
-    const token = jwt.sign({ id: user._id }, 'nodejsasm3', { expiresIn: '1h' })
-
-    res.status(200).json({
-      token,
-      user: {
-        email: user.email,
-        full_name: user.full_name,
-        phone: user.phone,
-        userId: user._id
-      },
-    })
   } catch (err) {
     res.status(401).json({ msg: err.message })
   }

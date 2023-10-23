@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import url from '../utils/url'
 
 const Wrapper = styled.div`
   background-color: #f9fbfd;
@@ -52,7 +53,7 @@ const PutProduct = ({method}) => {
 
   return (
     <Wrapper>
-      <form ref={formRef} onSubmit={submitForm} method='post' encType='multipart/form-data' action='https://asm3-nodejs-f00e5645d891.herokuapp.com/admin/product'>
+      <form ref={formRef} onSubmit={submitForm} method='post' encType='multipart/form-data' action={url.root + '/admin/product'}>
         <div className="info-term">
           <div className="subtitle">
             <label htmlFor="name">Product Name</label>

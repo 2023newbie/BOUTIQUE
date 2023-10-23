@@ -1,7 +1,7 @@
 {
   "env": {
-    "MONGO_USER": "",
-    "MONGO_PASSWORD": "",
-    "MONGO_DEFAULT_DATABASE": ""
+    "MONGO_USER": "root",
+    "MONGO_PASSWORD": "Zz12345678",
+    "MONGO_DEFAULT_DATABASE": "asm3nodejs"
   }
 }

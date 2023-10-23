@@ -1,3 +1,3 @@
 - admin: https://asm3-admin-d1c99.web.app/
 - client: https://asm3-client-504fd.web.app/
-- server: https://asm3-nodejs-f00e5645d891.herokuapp.com/
+- server: https://boutique2-2v5d.onrender.com/

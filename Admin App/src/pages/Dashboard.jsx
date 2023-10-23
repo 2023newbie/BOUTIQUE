@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import InfoBoard from '../components/InfoBoard'
 import Orders from '../components/Orders'
+import url from '../utils/url'
 
 const Container = styled.div`
   background-color: #f9fbfd;
@@ -25,7 +26,7 @@ export default Dashboard
 
 export async function loader() {
   try {
-    return await fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/admin/dashboard')
+    return await fetch(url.root + '/admin/dashboard')
   } catch (err) {
     console.log(err);
   }

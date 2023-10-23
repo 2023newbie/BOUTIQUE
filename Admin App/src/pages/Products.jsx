@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import SearchBox from '../components/SearchBox'
 import TableProducts from '../components/TableProducts'
 import getToken from '../utils/get-token'
+import url from '../utils/url'
 
 let allProducts = []
 
@@ -38,7 +39,7 @@ export default Products
 export async function loader() {
   const token = getToken()
   try {
-    const res = await fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/admin/products', {
+    const res = await fetch(url.root + '/admin/products', {
       headers: {
         'Authorization': 'Bearer ' + token
       }

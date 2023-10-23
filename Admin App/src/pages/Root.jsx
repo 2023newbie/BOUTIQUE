@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Outlet, redirect } from 'react-router-dom'
 import Sidebar from '../components/Sidebar'
 import getToken from '../utils/get-token'
+import url from '../utils/url'
 
 const Container = styled.div`
   display: flex;
@@ -34,7 +35,7 @@ export default Root
 export async function loader() {
   const token = getToken()
   try {
-    const res = await fetch('https://asm3-nodejs-f00e5645d891.herokuapp.com/admin/login', {
+    const res = await fetch(url.root + '/admin/login', {
       headers: { 'Authorization': 'Beaer ' + token }
     })
 
