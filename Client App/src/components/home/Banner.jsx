@@ -11,8 +11,8 @@ const Banner = ({path}) => {
             <span className={classes.big}>20% OFF ON NEW SEASON</span><br/>
             <button className={classes.button}><Link to='/shop?type=all'>Browse collections</Link></button>
         </div>
-        <img src={`${url.root}/${path}`} alt="banner" width='100%'/>
-    </div>
+        <img src={`${url.root}/${path}`} alt="banner" width='100%' />
+    </div> 
   )
 }
 

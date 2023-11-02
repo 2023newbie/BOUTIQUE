@@ -42,7 +42,7 @@ const OtherInfo = () => {
         <form action="" className={classes.form}>
           <input type="email" placeholder="Enter your email address" />
           <button>Subscribe</button>
-        </form>
+        </form> 
       </section>
     </div>
   );

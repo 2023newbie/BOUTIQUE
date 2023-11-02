@@ -1,5 +1,10 @@
 .banner {
     position: relative;
+    overflow: hidden;
+}
+
+.banner img {
+    min-height: 300px;
 }
 
 .subBanner {
@@ -46,4 +51,13 @@
 
 .button a:hover {
     color: #fff;
+}
+
+@media screen and (max-width: 600px) {
+    .big {
+        font-size: 36px;
+    }
+    .button a {
+        padding: 8px 16px;
+    }
 }
