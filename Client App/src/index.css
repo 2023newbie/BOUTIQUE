@@ -21,4 +21,5 @@ li {
   display: grid;
   margin-top: 50px;
   grid-template-columns: 1fr 4fr;
+  margin: 50px 24px 0 24px;
 }

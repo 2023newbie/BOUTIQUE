@@ -13,6 +13,11 @@
 
 .move_page button {
     padding: 10px;
+    border: none;
+}
+
+.move_page button:hover {
+    background-color: #d3d3d3;
 }
 
 .move_page span {
