@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import Products from '../share/Products/Products'
@@ -23,6 +23,10 @@ const Detail = props => {
   ))
 
   const heading = paraHead.map(para => <h3 className={classes['sub-title']} key={para}>{para}</h3>)
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <figure className={classes.detail}>

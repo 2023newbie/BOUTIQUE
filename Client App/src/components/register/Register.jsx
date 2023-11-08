@@ -76,7 +76,7 @@ const Register = () => {
       return
     }
 
-    axios.post('http://localhost:5000/client/signup', formData, {
+    axios.post('/signup', formData, {
       headers: { 'Content-Type': 'application/json' }
     })
       .then(result => {
