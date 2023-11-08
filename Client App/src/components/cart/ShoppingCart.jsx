@@ -1,21 +1,14 @@
 import classes from './ShoppingCart.module.css'
 import CartItem from './CartItem'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import numberToPrice from '../../util/number-to-price'
-import { cartActions } from '../../store/cart'
 
 const ShoppingCart = () => {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
-  const email = useSelector(store => store.login.info.email)
   const cart = useSelector(store => store.cart.listCart)
   const numTotalPrice = useSelector(store => store.cart.totalPrice)
   const totalPrice = numberToPrice(numTotalPrice)
-
-  const removeProductHandler = id => {
-    dispatch(cartActions.DELETE_CART({ id, email }))
-  }
 
   return (
     <main className={classes.main}>
@@ -38,7 +31,6 @@ const ShoppingCart = () => {
                 cart.map(product => (
                   <CartItem
                     product={product}
-                    onRemove={removeProductHandler}
                     key={product._id}
                   />
                 ))}

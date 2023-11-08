@@ -2,7 +2,7 @@ import { useState } from 'react'
 import classes from './CartItem.module.css'
 import priceToNumber from '../../util/price-to-number'
 import numberToPrice from '../../util/number-to-price'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { cartActions } from '../../store/cart'
 
 const trash_bin = (
@@ -18,21 +18,22 @@ const trash_bin = (
 const CartItem = props => {
   const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(Number(props.product.qty))
-  const email = useSelector(store => store.login.info.email)
   const price = priceToNumber(props.product.price)
   const totalPrice = price * quantity
   let totalPriceString = numberToPrice(totalPrice)
 
   const addOneProd = () => {
     setQuantity(prevState => ++prevState)
-    dispatch(
-      cartActions.ADD_CART({ prod: { ...props.product, qty: 1 }, email })
-    )
+    dispatch(cartActions.ADD_CART({ ...props.product, qty: 1 }))
   }
 
   const subtractOneProd = () => {
     setQuantity(prevState => --prevState)
-    dispatch(cartActions.SUB_CART({ prod: { ...props.product }, email }))
+    dispatch(cartActions.SUB_CART({ ...props.product }))
+  }
+
+  const deleteProd = () => {
+    dispatch(cartActions.DELETE_CART(props.product._id))
   }
 
   return (
@@ -56,7 +57,7 @@ const CartItem = props => {
       <td className={classes.grey}>{totalPriceString} VND</td>
       <td>
         <button
-          onClick={() => props.onRemove(props.product._id)}
+          onClick={() => deleteProd()}
           className={`${classes.btn} ${classes.grey}`}
         >
           {trash_bin}

@@ -1,16 +1,15 @@
 import { useState } from 'react'
 import classes from './Summary.module.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { cartActions } from '../../store/cart'
 
 const Summary = props => {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
-  const email = useSelector(store => store.login.info.email)
   
   const addProductToCart = e => {
     e.preventDefault()
-    dispatch(cartActions.ADD_CART({prod: { ...props, qty: quantity}, email: email}))
+    dispatch(cartActions.ADD_CART({ ...props, qty: quantity}))
   }
 
   const increaseQty = () => {

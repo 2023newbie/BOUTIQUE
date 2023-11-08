@@ -14,6 +14,7 @@ import getToken from './util/get-token'
 import HistoryPage, { loader as ordersLoader } from './page/HistoryPage'
 import DetailHistoryPage, { loader as orderLoader } from './page/DetailHistoryPage'
 import axios from './util/axios'
+import { cartActions } from './store/cart'
 
 const router = createBrowserRouter([
   {
@@ -47,10 +48,13 @@ function App() {
       })
         .then(res => {
           dispatch(loginActions.ON_LOGIN(res.data.user))
+          const cart = JSON.parse(localStorage.getItem('cart')) || []
+          dispatch(cartActions.UPDATE_CART(cart))
           setIsLoad(false)
         })
         .catch(err => console.log(err))
     } else {
+      localStorage.removeItem('cart')
       setIsLoad(false)
     }
   }, [dispatch])
