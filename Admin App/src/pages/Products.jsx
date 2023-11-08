@@ -39,7 +39,7 @@ export default Products
 export async function loader() {
   const token = getToken()
   try {
-    const res = await fetch(url.root + '/admin/products', {
+    const res = await fetch(url.root + '/products', {
       headers: {
         'Authorization': 'Bearer ' + token
       }
