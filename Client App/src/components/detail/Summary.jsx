@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import classes from './Summary.module.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../../store/cart'
 
-const Summary = props => {
+const Summary = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
-  
+  const isLogin = useSelector(state => state.login.isLogin)
+  const cart = useSelector(state => state.cart.listCart)
+  console.log(cart);
   const addProductToCart = e => {
     e.preventDefault()
-    dispatch(cartActions.ADD_CART({ ...props, qty: quantity}))
+    if (!isLogin) {
+      alert('Please login to order.')
+      return
+    }
+    console.log(quantity);
+    dispatch(cartActions.ADD_CART({ ...product, qty: quantity}))
   }
 
   const increaseQty = () => {
@@ -29,21 +36,21 @@ const Summary = props => {
     <figure className={classes.summary}>
       <section className={classes.picture}>
         <picture className={classes.small_picture}>
-          <img src={props.img1} alt={props.name} width="100%" />
-          <img src={props.img2} alt={props.name} width="100%" />
-          <img src={props.img3} alt={props.name} width="100%" />
-          <img src={props.img4} alt={props.name} width="100%" />
+          <img src={product.img1} alt={product.name} width="100%" />
+          <img src={product.img2} alt={product.name} width="100%" />
+          <img src={product.img3} alt={product.name} width="100%" />
+          <img src={product.img4} alt={product.name} width="100%" />
         </picture>
         <picture>
-          <img src={props.img1} alt={props.name} width="100%" />
+          <img src={product.img1} alt={product.name} width="100%" />
         </picture>
       </section>
       <section className={classes.info}>
-        <h1>{props.name}</h1>
-        <p className={classes.price}>{props.price} VND</p>
-        <p className={classes.desc}>{props.short_desc}</p>
+        <h1>{product.name}</h1>
+        <p className={classes.price}>{product.price} VND</p>
+        <p className={classes.desc}>{product.short_desc}</p>
         <p className={classes.category}>
-          <b>CATEGORY:</b> <span>&nbsp;{props.category}</span>
+          <b>CATEGORY:</b> <span>&nbsp;{product.category}</span>
         </p>
         <div className={classes.qty}>
           <span className={classes.label}>QUANTITY</span>

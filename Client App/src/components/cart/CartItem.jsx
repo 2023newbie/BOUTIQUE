@@ -15,36 +15,36 @@ const trash_bin = (
   </svg>
 )
 
-const CartItem = props => {
+const CartItem = ({ product }) => {
   const dispatch = useDispatch()
-  const [quantity, setQuantity] = useState(Number(props.product.qty))
-  const price = priceToNumber(props.product.price)
+  const [quantity, setQuantity] = useState(Number(product.qty))
+  const price = priceToNumber(product.price)
   const totalPrice = price * quantity
   let totalPriceString = numberToPrice(totalPrice)
 
   const addOneProd = () => {
     setQuantity(prevState => ++prevState)
-    dispatch(cartActions.ADD_CART({ ...props.product, qty: 1 }))
+    dispatch(cartActions.ADD_CART({ ...product, qty: 1 }))
   }
 
   const subtractOneProd = () => {
     setQuantity(prevState => --prevState)
-    dispatch(cartActions.SUB_CART({ ...props.product }))
+    dispatch(cartActions.SUB_CART({ ...product }))
   }
 
   const deleteProd = () => {
-    dispatch(cartActions.DELETE_CART(props.product._id))
+    dispatch(cartActions.DELETE_CART(product._id))
   }
 
   return (
     <tr className={classes.row}>
       <td>
-        <img src={props.product.img1} alt={props.product.name} width="100%" />
+        <img src={product.img1} alt={product.name} width="100%" />
       </td>
       <td>
-        <b>{props.product.name}</b>
+        <b>{product.name}</b>
       </td>
-      <td className={classes.grey}>{props.product.price} VND</td>
+      <td className={classes.grey}>{product.price} VND</td>
       <td className={classes.quantity}>
         <button onClick={() => subtractOneProd()} className={classes.btn}>
           <i className="fa-solid fa-caret-left"></i>

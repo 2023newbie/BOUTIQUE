@@ -7,33 +7,31 @@ const cartSlice = createSlice({
   reducers: {
     ADD_CART(state, action) {
       const prod = action.payload
-      console.log(prod);
-      const localCart = JSON.parse(localStorage.getItem('cart')) || []
+      const qty = prod.qty
       const numPrice = priceToNumber(prod.price)
-      const addedQty = prod.qty
+
+      state.totalPrice += numPrice * qty
       const pointProdIndex = state.listCart.findIndex(p => p._id === prod._id)
-      state.totalPrice += numPrice * addedQty 
       
       if (pointProdIndex === -1) {
         state.listCart.push(prod)
-        localCart.push(prod)
       } else {
-        state.listCart[pointProdIndex] += addedQty
-        localCart[pointProdIndex].qty += addedQty
+        state.listCart[pointProdIndex].qty += qty
       }
 
-      localStorage.setItem('cart', JSON.stringify(localCart)) 
+      localStorage.setItem('cart', JSON.stringify(state.listCart)) 
     },
     SUB_CART(state, action) {
-      const prod = action.payload.prod
+      const prod = action.payload
       const numPrice = priceToNumber(prod.price)
 
+      state.totalPrice -= numPrice
       const pointProdIndex = state.listCart.findIndex(p => p._id === prod._id)
+
       state.listCart[pointProdIndex].qty -= 1 
       if (state.listCart[pointProdIndex].qty === 0) {
         state.listCart.splice(pointProdIndex, 1)
       }
-      state.totalPrice -= numPrice
       
       localStorage.setItem('cart', JSON.stringify(state.listCart))
     },

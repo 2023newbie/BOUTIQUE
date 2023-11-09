@@ -5,15 +5,15 @@ import Products from '../share/Products/Products'
 
 import classes from './Detail.module.css'
 
-const Detail = props => {
+const Detail = ({product}) => {
   const [isShow, setIsShow] = useState(false)
   const navigate = useNavigate()
 
   let propertiesArr = []
 
-  if (props.long_desc !== undefined) {
-    propertiesArr = props.long_desc.split('\n•')
-    if (propertiesArr.length === 1) propertiesArr = props.long_desc.split('\n-')
+  if (product.long_desc !== undefined) {
+    propertiesArr = product.long_desc.split('\n•')
+    if (propertiesArr.length === 1) propertiesArr = product.long_desc.split('\n-')
   } // edit data to fit with data type render
 
   const paraHead = [propertiesArr.shift()]
@@ -45,7 +45,7 @@ const Detail = props => {
           </ul>
           <h2 className={classes.title}>RELATED PRODUCTS</h2>
           <Products
-            products={props.sameProds}
+            products={product.sameProds}
             action={product => {
               navigate(`/detail/${product._id}`)
               window.scroll({

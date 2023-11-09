@@ -10,8 +10,8 @@ const DetailPage = () => {
 
   return (
     <>
-      <Summary {...data} />
-      <Detail {...data} />
+      <Summary product={data} />
+      <Detail product={data} />
     </>
   )
 }
