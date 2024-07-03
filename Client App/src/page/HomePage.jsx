@@ -11,7 +11,7 @@ const HomePage = () => {
   const data = useLoaderData()
   return (
     <>
-      <Banner path={data.pathBanner} />  
+      <Banner path={data.pathBanner} />
       <CategoriesList path={data.pathCategories} />
       <TrendingProducts products={data.products} />
       <OtherInfo />
@@ -31,9 +31,10 @@ export async function loader() {
       const price = numberToPrice(prod.price)
       return { ...prod, price }
     })
-    
+
     return { ...data, products: editProds }
   } catch (err) {
     console.log(err)
+    return null
   }
 }
